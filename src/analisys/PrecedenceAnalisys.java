@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes_De_Analise;
+package analisys;
 
 import java.util.ArrayList;
 
@@ -13,10 +13,11 @@ import java.util.ArrayList;
  */
 public class PrecedenceAnalisys {
         private String AND = "&";
-	private String OR  = "|";
-	private String NOT = "!";
-        private String Variables;
+        private String OR  = "|";
+		private String NOT = "!";		
+        private String Variables;        
         public SyntaxAnalisys syntax;
+        
         ArrayList operations   = new ArrayList();
         int indice             = 0;
         String finalSentence   = "";
@@ -128,5 +129,7 @@ public class PrecedenceAnalisys {
             return operations;
         }
         
-        
+        public void setSyntax(SyntaxAnalisys syntax) {
+        	this.syntax = syntax;
+        }
 }

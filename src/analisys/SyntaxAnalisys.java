@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes_De_Analise;
+package analisys;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,44 +19,50 @@ public class SyntaxAnalisys {
 	private String AND = "&";
 	private String OR  = "\\|";
 	private String NOT = "!";
-        private String Variables;
+    private String Variables;
+    
+    public SyntaxAnalisys(String sentence)
+    {
+    	this.sentence = sentence;
+    }
 	
 	
         
-        public boolean checkUp()
+    public boolean checkUp()
+    {
+        if(this.hasNumber() == true)
         {
-            if(this.hasNumber() == true)
-            {
-                JOptionPane.showMessageDialog(null,"A Entrada Contém números, para gerar a tabela retire os números","ERRO", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            if(this.hasRepeatLetter())
-            {
-                JOptionPane.showMessageDialog(null,"A Entrada possui letras repetidas. Ex: AA","ERRO", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            if(!this.checkValidityOperatorsNOT())
-            {
-                JOptionPane.showMessageDialog(null,"Erro próximo ao operador \"!\" ","ERRO", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            if(!this.checkValidityOperatorsAND())
-            {
-                JOptionPane.showMessageDialog(null,"Erro próximo ao operador \"&\" ","ERRO", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            if(this.hasLetterTogether())
-            {
-                JOptionPane.showMessageDialog(null,"Possui duas variaveis juntas ","ERRO", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            
-            return true;
+            JOptionPane.showMessageDialog(null,"A Entrada Cont�m n�meros, para gerar a tabela retire os n�meros","ERRO", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
+        
+        if(this.hasRepeatLetter())
+        {
+            JOptionPane.showMessageDialog(null,"A Entrada possui letras repetidas. Ex: AA","ERRO", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(!this.checkValidityOperatorsNOT())
+        {
+            JOptionPane.showMessageDialog(null,"Erro próximo ao operador \"!\" ","ERRO", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(!this.checkValidityOperatorsAND())
+        {
+            JOptionPane.showMessageDialog(null,"Erro próximo ao operador \"&\" ","ERRO", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        if(this.hasLetterTogether())
+        {
+            JOptionPane.showMessageDialog(null,"Possui duas variaveis juntas ","ERRO", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
+    }
+    
 	public boolean hasNumber()
 	{
 		for(int i = 0; i < this.sentence.length(); i++ ){
@@ -86,8 +92,10 @@ public class SyntaxAnalisys {
         public boolean hasLetterTogether()
         {
             for(int i = 0; i < this.sentence.length() - 1; i++ ){
-		char temp = this.sentence.charAt(i);	
-                if(Character.isAlphabetic(temp))
+            	
+            	char temp = this.sentence.charAt(i);	
+                
+            	if(Character.isAlphabetic(temp))
                 {
                     temp = this.sentence.charAt(i+1);
                     
@@ -108,19 +116,18 @@ public class SyntaxAnalisys {
             String tempSentence = this.sentence;
             int result 		= 0;
             ArrayList values 	= new ArrayList();
-            tempSentence        = tempSentence.replaceAll(NOT, "");
-            tempSentence        = tempSentence.replaceAll(OR, "");
-            tempSentence        = tempSentence.replaceAll(AND, "");							
+            tempSentence = tempSentence.replaceAll(NOT, "");
+            tempSentence = tempSentence.replaceAll(OR, "");
+            tempSentence = tempSentence.replaceAll(AND, "");							
 
             for(int i = 0; i < tempSentence.length(); i++ ){
-
-                    if(!values.contains(tempSentence.charAt(i)))
-                    {
-                            values.add(tempSentence.charAt(i));
-                    }
+                if(!values.contains(tempSentence.charAt(i)))
+                {
+                        values.add(tempSentence.charAt(i));
+                }
             }				
             
-            Variables = values.toString();            
+            Variables = values.toString();
             return values.size();							
 	}
         
@@ -142,9 +149,7 @@ public class SyntaxAnalisys {
                     }
             }				
               
-            
-            //values.t
-            
+
             return values.toArray(); 					
                         
         }
@@ -312,7 +317,5 @@ public class SyntaxAnalisys {
             return numberOfOrs;							
             
         }
-	
-	  //Números de AND, OR, NOT
-	 //Número de operações
+		
 }

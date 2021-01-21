@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package geracao_binario;
+package binaryGenerator;
 
-import Classes_De_Analise.SyntaxAnalisys;
 import java.util.Arrays;
+
+import analisys.SyntaxAnalisys;
 
 /**
  *
@@ -76,21 +77,15 @@ public class BinaryGenerator {
         
         for(int j = this.numberOfVariables - 1; j >= 0 ; j--)
         {
-            //System.out.println(temp[i]);
             for(int i = 0; i < number; i++)
             {
-                //System.out.println(Arrays.toString(RowBin(i)));
                 temp = RowBin(i);
                 table[j][i] = temp[j];
-                //System.out.println(temp[j]);
             }
             
             
         }
-        
-        //System.out.println(Arrays.deepToString(table));
-        //  System.out.println(table[1][1]);
-        
+                
         return table;
     }
 }

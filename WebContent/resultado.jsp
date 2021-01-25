@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	
-	TruthTable truthTable = new TruthTable("A&B&B");	
+	TruthTable truthTable = new TruthTable("A&B|C");	
 	request.setAttribute("truthTable", truthTable);
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -15,27 +15,48 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Resultado</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
-	<h1> Resultado da expressão: ${truthTable.getSentence() } </h1>
-	
-	<ul>
-		<c:forEach items="${truthTable.getOperations()}" var="operation" varStatus="loop">		 	
-			<li>
-				<strong><c:out value="${loop.last ? 'Resultado referente ao passo ' : ('Passo nº: ' += loop.index) }"/></strong> - ${ operation } 		
-			</li>									
-		</c:forEach>
-	</ul>
-	
-	<table>
-		<thead>
-			<tr>
-				<c:forEach items="${truthTable.getColumns()}" var="column" varStatus="loop">		 	
-					<th> ${ column }</th>									
-				</c:forEach>
-			</tr>
-		</thead>
-	</table>	
+	<div class="container">
+		<div class="row">
+			<h1 class="text-center"> Resultado da expressão: ${truthTable.getSentence() } </h1>
+			<div class="col-md-12">
+				<p>Para resolver a tabela, siga esses passos</p>
+				<ul>
+					<c:forEach items="${truthTable.getOperations()}" var="operation" varStatus="loop">		 	
+						<li>
+							<strong><c:out value="${loop.last ? 'Resultado referente ao passo ' : ('Passo nº: ' += loop.index) }"/></strong> - ${ operation } 		
+						</li>									
+					</c:forEach>
+				</ul>
+				
+				<table class="table table-dark table-striped">
+					<thead>
+						<tr class="text-center">
+							<c:forEach items="${truthTable.getColumns()}" var="column" varStatus="loop">		 	
+								<th> ${ column }</th>									
+							</c:forEach>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach begin="0" end="${ truthTable.getNumberOfRows() - 1 }" varStatus="loop">
+							<tr>
+								<c:forEach begin="0" end="${ truthTable.getNumberOfVariables() - 1 }" varStatus="loop">
+									<td class="text-center">1</td>
+								</c:forEach>
+								<c:forEach begin="0" end="${ truthTable.getNumberOfOperations() - 1 }" varStatus="loop">
+									<td><input type="text" class="form-control" style="max-width: 75px;margin: 0 auto;"></td>
+								</c:forEach>
+							</tr>		 																
+						</c:forEach>						
+					</tbody>
+				</table>
+			</div>			
+		</div>		
+	</div>
+		
 
 </body>
 </html>

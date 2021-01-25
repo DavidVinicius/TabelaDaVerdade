@@ -22,40 +22,29 @@ public class PrecedenceAnalisys {
         int indice             = 0;
         String finalSentence   = "";
         
-        public String precedenceNOT()
+        private String precedenceNOT()
         {
+        	//operations = new ArrayList();
             String tempSentence    = syntax.sentence;
             String sentence        = "";
             
             for(int i = 0 ; i < tempSentence.length() - 1; i++)
             {
                 if(NOT.equals(String.valueOf(tempSentence.charAt(i))))
-                {                    
-                    if(tempSentence.charAt(i+1) == '(')
-                    {
-                        
-                    }else{
-                        
-                        sentence = tempSentence.substring(i, i+2);
-                        tempSentence = tempSentence.replace(sentence, ""+indice+"");
-                        operations.add(indice, sentence);
-                        //System.out.println(sentence);
-                       // System.out.println(tempSentence);
-                        indice++;
-                    }
+                {        
+                	sentence = tempSentence.substring(i, i+2);
+                    tempSentence = tempSentence.replace(sentence, ""+indice+"");
+                    operations.add(indice, sentence);
                     
+                    indice++;                                      
                 }
             }
-            
-            
-            
-            //System.out.println(operations.toString());
-            
+                                               
             return tempSentence;
                         
         }
         
-        public String precedenceAND()
+        private  String precedenceAND()
         {
             String tempSentence    = this.precedenceNOT();
             String sentence        = "";
@@ -64,20 +53,11 @@ public class PrecedenceAnalisys {
                 for(int i = 0 ; i < tempSentence.length() - 1; i++)
                 {
                     if(AND.equals(String.valueOf(tempSentence.charAt(i))))
-                    {                    
-                        if(tempSentence.charAt(i+1) == '(')
-                        {
-
-                        }else{
-
-                            sentence = tempSentence.substring(i-1, i+2);
-                            tempSentence = tempSentence.replace(sentence, ""+indice+"");
-                            operations.add(indice, sentence);
-                            //System.out.println(sentence);
-                            //System.out.println(tempSentence);
-                            indice++;
-                        }
-
+                    {    
+                    	sentence = tempSentence.substring(i-1, i+2);
+                        tempSentence = tempSentence.replace(sentence, ""+indice+"");
+                        operations.add(indice, sentence);
+                        indice++;                        
                     }
                 }
             }
@@ -88,7 +68,7 @@ public class PrecedenceAnalisys {
             return tempSentence;
         }
         
-        public String precedenceOR()
+        private String precedenceOR()
         {
             String tempSentence    = this.precedenceAND();
             String sentence        = "";
@@ -96,40 +76,39 @@ public class PrecedenceAnalisys {
             for(int i = 0 ; i < tempSentence.length() - 1; i++)
             {
                 if(OR.equals(String.valueOf(tempSentence.charAt(i))))
-                {                    
-                    if(tempSentence.charAt(i+1) == '(')
-                    {
-                        
-                    }else{
-                        
-                        sentence = tempSentence.substring(i-1, i+2);
-                        tempSentence = tempSentence.replace(sentence, ""+indice+"");
-                        operations.add(indice, sentence);
-                       // System.out.println(sentence + " OR");
-                        //System.out.println(tempSentence + " OR");
-                        indice++;
-                    }
-                    
+                {      
+                	sentence = tempSentence.substring(i-1, i+2);
+                    tempSentence = tempSentence.replace(sentence, ""+indice+"");
+                    operations.add(indice, sentence); 
+                    indice++;
                 }
             }
-                        
-           System.out.println(operations.toString());
-            
+                                               
             return tempSentence;
         }
         
         public ArrayList Precedence()
         {
-            String tempSentence = this.precedenceOR();
-            if(syntax.numberOfVariables() > 2 || syntax.numberOfOperators() >= 2)
-            {
-                operations.add(indice, tempSentence);
-            }
-            
-            return operations;
+        	if (this.operations.size() > 0) {
+        		return this.getOperations();
+        	} else {
+	    		
+        		String tempSentence = this.precedenceOR();
+	            if(syntax.numberOfVariables() > 2 || syntax.numberOfOperators() >= 2)
+	            {
+	                operations.add(indice, tempSentence);
+	            }
+	            
+	            return operations;
+        		
+        	}            
         }
         
         public void setSyntax(SyntaxAnalisys syntax) {
         	this.syntax = syntax;
+        }
+        
+        public ArrayList getOperations() {
+        	return this.operations;
         }
 }

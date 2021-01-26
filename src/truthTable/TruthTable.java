@@ -1,6 +1,7 @@
 package truthTable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import analisys.PrecedenceAnalisys;
 import analisys.SyntaxAnalisys;
@@ -15,6 +16,7 @@ public class TruthTable {
 	PrecedenceAnalisys precedenceAnalisys;
 	BinaryGenerator binaryGenerator;
 	ArrayList columns;
+	Character[][] tableBin;
 	
 	public TruthTable(String sentence) {
 		this.sentence = sentence;
@@ -25,6 +27,8 @@ public class TruthTable {
 		columns = new ArrayList();
 		
 		binaryGenerator = new BinaryGenerator();
+		binaryGenerator.setNumberOfVariables((int) this.syntaxAnalisys.numberOfVariables());
+		tableBin = binaryGenerator.TableBin();
 	}
 	
 	public ArrayList<?> getOperations()
@@ -207,5 +211,9 @@ public class TruthTable {
 	
 	public int getNumberOfOperations() {
 		return this.getOperations().size();
+	}
+	
+	public char getTableValue(int row, int column) {		
+	    return this.tableBin[column][row];		
 	}
 }

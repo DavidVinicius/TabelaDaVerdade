@@ -79,7 +79,7 @@ public class BinaryGenerator {
         {
             for(int i = 0; i < number; i++)
             {
-                temp = RowBin(i);
+                temp = RowBin(i);                
                 table[j][i] = temp[j];
             }
             
@@ -88,4 +88,8 @@ public class BinaryGenerator {
                 
         return table;
     }
+
+	public void setNumberOfVariables(int n) {
+		this.numberOfVariables = n;		
+	}
 }

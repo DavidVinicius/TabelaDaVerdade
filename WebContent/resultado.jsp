@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	
-	TruthTable truthTable = new TruthTable("A&B|C");	
+	TruthTable truthTable = new TruthTable("A&B&C");	
 	request.setAttribute("truthTable", truthTable);
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -43,8 +43,8 @@
 					<tbody>
 						<c:forEach begin="0" end="${ truthTable.getNumberOfRows() - 1 }" varStatus="loop">
 							<tr>
-								<c:forEach begin="0" end="${ truthTable.getNumberOfVariables() - 1 }" varStatus="loop">
-									<td class="text-center">1</td>
+								<c:forEach begin="0" end="${ truthTable.getNumberOfVariables() - 1 }" varStatus="loopVar">
+									<td class="text-center"> ${ truthTable.getTableValue(loop.index, loopVar.index) }</td>
 								</c:forEach>
 								<c:forEach begin="0" end="${ truthTable.getNumberOfOperations() - 1 }" varStatus="loop">
 									<td><input type="text" class="form-control" style="max-width: 75px;margin: 0 auto;"></td>
@@ -55,6 +55,13 @@
 				</table>
 			</div>			
 		</div>		
+		<div class="row">
+			<div class="col-md-12">
+				<a href="index.jsp">
+					<button class="btn btn-primary">Avaliar outra expressão</button>
+				</a>
+			</div>
+		</div>
 	</div>
 		
 

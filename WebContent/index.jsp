@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Bem-vindo</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
@@ -12,51 +13,15 @@
 			<h1 class="text-center">Tabela Verdade</h1>
 			<div class="col-md-12">
 				<form action="resultado.jsp" method="post">
-					<table class="table table-dark table-striped">
-						<thead>
-							<tr class="text-center">
-								<h4>Insira suas comparações:</h4>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="text-center">
-							<td>
-								<label for="pexpressao">Primeira Expressão:</label> 
-								<input type="text" id="pvalor" pattern="[A-Z]" placeholder="Insira uma letra maiúscula">
-							</td>
-							<td>
-								<label for="tipo">Tipo de comparação:</label> 
-								<input list="operadores" id="poperador">
-								<datalist id="operadores">
-									<option value="&">
-									<option value="|">
-									<option value="!">
-								</datalist>
-							</td>
-							<td>
-								<label for="sexpressao">Segunda Expressão:</label> 
-								<input type="text" id="svalor" pattern="[A-Z]" placeholder="Insira uma letra maiúscula">
-							</td>
-							<td>
-							<td>
-								<label for="tipo">Tipo de comparação:</label> 
-								<input list="operadores" id="soperador">
-								<datalist id="operadores">
-									<option value="&">
-									<option value="|">
-									<option value="!">
-								</datalist>
-							</td>
-							<td>
-								<label for="texpressao">Terceira Expressão:</label> 
-								<input type="text" id="tvalor" pattern="[A-Z]" placeholder="Insira uma letra maiúscula">
-							</td>
-							<td>
-								<input type="submit" value="Enviar">
-							</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="row" style="display:flex; justify-content:center; height: 30vh;">
+						<h3 class="text-center">Insira sua express�o</h3>
+						<div class="col-md-8">
+							<input type="text" name="expression" class="form-control text-center" style="font-size:30px;" required>
+						</div>
+						<div class="col-md-8" style="display:flex; justify-content:center;">						
+							<button class="btn btn-success">Avaliar Express�o</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>

@@ -7,8 +7,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	
-	TruthTable truthTable = new TruthTable("A&B&C");	
+	String expression = request.getParameter("expression");
+	TruthTable truthTable = new TruthTable(expression);	
 	request.setAttribute("truthTable", truthTable);
+	
 %>
 
 <!DOCTYPE html>
@@ -22,6 +24,7 @@
 <body>
 	<div class="container">
 		<div class="row">
+			
 			<h1 class="text-center"> Resultado da expressão: ${truthTable.getSentence() } </h1>
 			<div class="col-md-12">
 				<p>Para resolver a tabela, siga esses passos</p>

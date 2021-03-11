@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/entrada" var="linkEntrada" />
+<c:url value="/historico" var="linkHistorico" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +15,7 @@
 		<div class="row">
 			<h1 class="text-center">Tabela Verdade</h1>
 			<div class="col-md-12">
-				<form action="resultado.jsp" method="post">
+				<form action="${linkEntrada}" method="post">
 					<div class="row" style="display:flex; justify-content:center; height: 30vh;">
 						<h3 class="text-center">Insira sua expressão</h3>
 						<div class="col-md-8">
@@ -20,8 +23,13 @@
 						</div>
 						<div class="col-md-8" style="display:flex; justify-content:center;">						
 							<button class="btn btn-success">Avaliar Expressão</button>
+						</div>												
+						<div class="col-md-8" style="display:flex; justify-content:center; margin-top: 20px;">
+							<a href="${linkHistorico }">
+								<button type="button" class="btn btn-info">Histórico</button>
+							</a>													
 						</div>
-					</div>
+					</div>					
 				</form>
 			</div>
 		</div>

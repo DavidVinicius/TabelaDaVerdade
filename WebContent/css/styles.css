@@ -1,0 +1,244 @@
+/* font importing */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+}
+
+:root {
+    --fundo:  #21243E;
+    --roxo:  #888FD1;
+    --cinza:  #505052;
+    --claro:  #DEDEDE;
+    --azul: #4e96fa;
+}
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    width: 100%;
+    height: 400px;
+    background: var(--fundo);
+}
+
+.content {
+    max-width: 1000px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    padding: 10px;
+}
+
+.brand {
+    font-size: 65px;
+    color: var(--roxo);
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    height: 125px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul li {
+    cursor: pointer;
+    list-style: none;
+    padding: 10px;
+}
+
+nav ul li a {
+    color: var(--roxo);
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: var(--azul);
+}
+
+img {
+    width: 8%;
+}
+
+.content .header-block {
+    max-width: 1000px;
+    background: var(--cinza);
+    min-width: 300px;
+    height: 350px;
+    box-shadow: rgba(0, 0, 0, 0.5) 1px 0px 10px 0px;
+    position: relative;
+    z-index: 10;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.header-block .text {
+    max-width: 960px;
+    min-width: 294px;
+}
+
+.header-block nav {
+    justify-content: space-evenly;
+}
+
+.text h2 {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    margin: 30px 0px 0px;
+}
+
+input {
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    margin: 30px 0px 0px;
+}
+
+button {
+    cursor: pointer;
+    background: var(--fundo);
+    border: 1px solid var(--roxo);
+    color: var(--roxo);
+    font-weight: bold;
+    font-size: 25px;
+    padding: 8px 40px;
+    border-radius: 4px;
+}
+
+button:hover {
+	transition: background, color 0.6s;
+	border-color: var(--azul);
+    color: var(--azul);
+}
+
+section .david-titulo {
+    margin-top: 200px;
+    padding-bottom: 20px;
+}
+
+section .david-info {
+    width: 980px;
+    height: 300px;
+    background: var(--claro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    font-size: 35px;
+    border-radius: 8px;
+    margin: 0px auto;
+}
+
+section .david-info ul li {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    list-style: none;
+    padding: 10px;
+    margin: 15px 0px;
+}
+
+.juan {
+    margin-top: 150px;
+    width: 100%;
+    height: 100%;
+    background: var(--claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px;
+}
+
+section .juan-titulo {
+    padding-bottom: 20px;
+}
+
+section .juan-info {
+    width: 980px;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    font-size: 35px;
+    background: white;
+    border-radius: 8px;
+    margin: 0px auto;
+}
+
+section .juan-info ul li {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    list-style: none;
+    padding: 10px;
+    margin: 15px 0px;
+}
+
+footer {
+    width: 100%;
+    height: 250px;
+}
+
+footer .main {
+    width: 100%;
+    height: 200px;
+    background: var(--fundo);
+    padding: 20px 10px;
+}
+
+.footer-instituto {
+    max-width: 1000px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    color: var(--roxo);
+    height: 100%;
+    min-height: 100px;
+}
+
+.footer-instituto {
+    margin-bottom: 8px;
+}
+
+.footer-instituto ul li {
+    text-align: center;
+    list-style: none;
+}
+
+.footer-instituto h4 {
+    margin-bottom: 10px;
+}
+
+.footer-instituto h6 {
+    margin-bottom: 5px;
+}
+
+footer .last {
+    width: 100%;
+    height: 50px;
+    color: var(--roxo);
+    background: var(--cinza);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

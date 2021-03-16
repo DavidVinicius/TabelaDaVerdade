@@ -16,11 +16,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Resultado</title>
-<link href="css/styles.css" rel="stylesheet"></head>
-<body>
-	<div class="container">
+	<meta charset="ISO-8859-1">
+	<title>Resultado</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet">
+	
+</head>
+<body>	
+	
+	<jsp:include page="includes/header.jsp" />
+	
+	<div class="container" style="height: 70vh; overflow-y: auto">
 		<div class="row">
 			
 			<h1 class="text-center"> Resultado da expressão: ${truthTable.getSentence() } </h1>

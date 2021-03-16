@@ -45,23 +45,7 @@ public class Entrada extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("Passou aqui");		
 		String expression = request.getParameter("expression");
-		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("TabelaVerdadeWeb");
-		
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		
-		Historico hist = new Historico();
-		hist.setExpression(expression);
-		
-		//Historico historico = entityManager.find(Historico.class, 1);
-		
-		entityManager.getTransaction().begin();
-		entityManager.persist(hist);		
-		entityManager.getTransaction().commit();
-				
-		entityManager.close();
-		entityManagerFactory.close();
-				
+						
 		TruthTable truthTable = new TruthTable(expression);	
 		request.setAttribute("truthTable", truthTable);
 		

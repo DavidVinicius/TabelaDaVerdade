@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.transform.Transformers;
 
+import dao.HistoricoDAO;
 import model.Historico;
 
 /**
@@ -41,21 +42,9 @@ public class HistoricoExpressions extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("TabelaVerdadeWeb");		
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-							
-		List<Historico> results = (List<Historico>) entityManager.createNativeQuery("select * from historico;", Historico.class).getResultList();
-			
-		System.out.println("Total Number Of Records : "+results.size());
+		HistoricoDAO histDAO = new HistoricoDAO();
 		
-		for(Historico hist: results) {
-			System.out.println(hist.getExpression());
-		}
-	    		
-				
-		entityManager.close();
-		entityManagerFactory.close();
-		
+		List<Historico> results = histDAO.getAll();		
 		
 		request.setAttribute("historico", results);
 		

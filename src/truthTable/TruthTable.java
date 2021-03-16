@@ -28,7 +28,7 @@ public class TruthTable {
 		
 		binaryGenerator = new BinaryGenerator();
 		binaryGenerator.setNumberOfVariables((int) this.syntaxAnalisys.numberOfVariables());
-		tableBin = binaryGenerator.TableBin();
+		tableBin = binaryGenerator.TableBin();			
 	}
 	
 	public ArrayList<?> getOperations()
